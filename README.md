@@ -11,10 +11,10 @@ To clone and create the project, open a command prompt and proceed as follows:
 ### Linux
 
 ```
-git clone https://www.github.com/hansen-audio/renegate-fx.git
+git clone https://www.github.com/rehans/pipewire-client.git
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Debug ../renegate-fx
+cmake -DCMAKE_BUILD_TYPE=Debug ../pipewire-client
 cmake --build .
 ```
 
