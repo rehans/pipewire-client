@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.20.0)
 
-include(FetchContent)
-
 project("PipeWire Client")
 
 find_package(PkgConfig REQUIRED)
