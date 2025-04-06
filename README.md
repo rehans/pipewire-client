@@ -26,7 +26,7 @@ Since Ubuntu 23.04 PipeWire is the default audio server.
 * `sudo apt install pipewire`
 * `sudo apt install libpipewire-0.3-dev`
 
-> On Ubuntu the `pipewire_client` is not connected automatically to the standard output when starting. But on Manjaro it is...no idea why. So do it manually via the `qpwgraph` app.
+> On Ubuntu the `pipewire_client` is not connected automatically to the standard output when starting. But on Manjaro it is...no idea why.
 
 ## Get Started
 
@@ -41,6 +41,19 @@ cd build
 cmake -DCMAKE_BUILD_TYPE=Debug ../pipewire-client
 cmake --build .
 ```
+
+## Make a connection between nodes
+
+### Use pw-link in terminal
+
+Start the `pipewire_client`. Open a terminal and list the available the outputs using `pw-link`:
+
+* `pw-link -o` lists all outputs including our client which is called `audio-dsp-src:output`
+* `pw-link -i` lists all inputs including the default output node, sth. like `alsa_output.pci-0000_00_1f.3.analog-stereo:playback_FL` (FL: Front Left)
+* `pw-link audio-dsp-src:output alsa_output.pci-0000_00_1f.3.analog-stereo:playback_FL` establishes a connection between the `pipewire_client` and the OSes output
+* `pw-link -d audio-dsp-src:output alsa_output.pci-0000_00_1f.3.analog-stereo:playback_FL` -> `-d` unlinks the connection
+
+> Inspect the terminal commands with the PipeWire Graph Qt GUI Interface app called `qpwgraph`.`qpwgraph`
 
 ## Inspect PipeWire
 
@@ -58,3 +71,4 @@ In terminal:
 
 * https://docs.pipewire.org/page_api.html
 * https://wiki.ubuntuusers.de/Pipewire (german)
+* https://github.com/rncbc/qpwgraph
